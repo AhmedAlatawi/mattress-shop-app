@@ -5,15 +5,15 @@ import photoClasses from './Photo.module.scss';
 const Photo = (props) => {
     const [image, setImage] = useState(null);
 
-    const loadImage = name => {
-        import(`../../../assets/images/${name}-carousel.jpg`).then(image => setImage(image.default));
+    const loadImage = mattress => {
+        import(`../../../assets/images/${mattress.imageFileName}`).then(image => setImage(image.default));
     };
 
-    useEffect(() => loadImage(props.mattressId), [props.mattressId]);
+    useEffect(() => loadImage(props.mattress), [props.mattress]);
 
     return (
         <div className={photoClasses.Photo}>
-            {image && <img src={image} alt={props.mattressId} />}
+            {image && <img src={image} alt={props.mattress.name} />}
         </div>
     );
 };
